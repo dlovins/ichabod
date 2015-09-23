@@ -1,17 +1,23 @@
 require 'spec_helper'
 describe FacultyDigitalArchiveServiceData do
   let(:prefix) { 'fda' }
+  let(:collection) { "Data Services" }
   let(:file_path) { 'ingest/test_data_service.csv' }
   let(:args) { [file_path].compact }
   subject(:faculty_digital_archive_service_data) { FacultyDigitalArchiveServiceData.new(*args) }
   it { should be_a FacultyDigitalArchiveServiceData }
   it { should be_a Ichabod::ResourceSet::Base }
   its(:file_path) { should eq file_path }
+  its(:collection) { should eq collection }
   its(:editors) { should eq ['admin_group', 'fda_cataloger'] } 
   its(:before_loads) { should eq [:add_edit_groups, :add_resource_set, :set_available_or_citation ] }
   describe '.prefix' do
     subject { FacultyDigitalArchiveServiceData.prefix }
     it { should eq prefix }
+  end
+  describe '.collection' do
+    subject { FacultyDigitalArchiveServiceData.collection }
+    it { should eq collection }
   end
   describe '.source_reader' do
     subject { FacultyDigitalArchiveServiceData.source_reader }

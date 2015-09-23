@@ -1,16 +1,22 @@
 require 'spec_helper'
 describe FacultyDigitalArchive do
   let(:prefix) { 'fda' }
+  let(:collection) { "Faculty Digital Archive" }
   let(:filename) { './spec/fixtures/sample_fda.xml' }
   subject(:faculty_digital_archive) { FacultyDigitalArchive.new(filename) }
   it { should be_a FacultyDigitalArchive }
   it { should be_a Ichabod::ResourceSet::Base }
+  its(:collection) { should eq collection }
   its(:filename) { should eq filename }
   its(:editors) { should eq ['admin_group', 'fda_cataloger'] }
   its(:before_loads) { should eq [:add_edit_groups, :add_resource_set, :add_identifier_as_available_or_citation, :set_http_identifier] }
   describe '.prefix' do
     subject { FacultyDigitalArchive.prefix }
     it { should eq prefix }
+  end
+  describe '.collection' do
+    subject { FacultyDigitalArchive.collection }
+    it { should eq collection }
   end
   describe '.source_reader' do
     subject { FacultyDigitalArchive.source_reader }

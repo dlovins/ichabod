@@ -9,10 +9,10 @@ module Ichabod
 
       class << self
         attr_reader :source_reader
-        attr_accessor :prefix
+        attr_accessor :prefix, :collection
       end
 
-      attr_reader :prefix, :editors, :before_loads, :set_restrictions
+      attr_reader :prefix, :collection, :editors, :before_loads, :set_restrictions
 
       def self.source_reader=(source_reader)
         unless source_reader.is_a?(Class)
@@ -117,6 +117,7 @@ module Ichabod
 
       def initialize(*args)
         @prefix = self.class.prefix
+        @collection = self.class.collection
         @editors = self.class.editors.map(&:to_s)
         @before_loads = self.class.before_loads.map(&:to_sym)
         @set_restrictions = self.class.set_restrictions.join("")

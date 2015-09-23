@@ -1,6 +1,7 @@
 require 'spec_helper'
 describe NyuPressOpenAccessBook do
   let(:prefix) { 'nyupress' }
+  let(:collection) { "NYU Press Open Access Books" }
   let(:endpoint_url) { 'discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select' }
   let(:collection_code) { 'nyupress' }
   let(:rows) { '65' }
@@ -10,6 +11,7 @@ describe NyuPressOpenAccessBook do
   it { should be_a NyuPressOpenAccessBook }
   it { should be_a Ichabod::ResourceSet::Base }
   its(:prefix) { should eq prefix }
+  its(:collection) { should eq collection }
   its(:endpoint_url) { should eq endpoint_url }
   its(:collection_code) { should eq collection_code }
   its(:rows) { should eq rows }
@@ -19,6 +21,10 @@ describe NyuPressOpenAccessBook do
   describe '.prefix' do
     subject { NyuPressOpenAccessBook.prefix }
     it { should eq prefix }
+  end
+  describe '.collection' do
+    subject { NyuPressOpenAccessBook.collection }
+    it { should eq collection }
   end
   describe '.source_reader' do
     subject { NyuPressOpenAccessBook.source_reader }

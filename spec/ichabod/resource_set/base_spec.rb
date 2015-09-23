@@ -11,6 +11,7 @@ module Ichabod
       let(:editors) { [:editor1, :editor2] }
       let!(:original_editors) { Base.editors - editors }
       let(:prefix) { 'mock' }
+      let(:collection) { 'coll' }
       describe '.prefix=' do
         after { Base.prefix=(nil)}
         subject { Base.prefix=(prefix) }
@@ -20,6 +21,17 @@ module Ichabod
         it 'should set the prefix attribute on the class' do
           subject
           expect(Base.prefix).to eq prefix
+        end
+      end
+      describe '.collection=' do
+        after { Base.collection=(nil)}
+        subject { Base.collection=(collection) }
+        it 'should not raise an ArgumentError' do
+          expect { subject }.not_to raise_error
+        end
+        it 'should set the collection attribute on the class' do
+          subject
+          expect(Base.collection).to eq collection
         end
       end
       describe '.editor' do
@@ -122,6 +134,17 @@ module Ichabod
           before { Base.prefix = prefix }
           after { Base.prefix = nil}
           it { should eq prefix }
+        end
+      end
+      describe '#collection' do
+        subject { base.collection }
+        context 'when not configured with a collection' do
+          it { should be_nil }
+        end
+        context 'when configured with a collection' do
+          before { Base.collection = collection }
+          after { Base.collection = nil}
+          it { should eq collection }
         end
       end
       describe '#editors' do

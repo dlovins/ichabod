@@ -1,6 +1,7 @@
 require 'spec_helper'
 describe Voice do
   let(:prefix) { 'beard' }
+   let(:collection) { "Voices of the Food Revolution" }
   let(:endpoint_url) { 'https://Voices.of.food' }
   let(:collection_code) { 'beard' }
   let(:args) { endpoint_url }
@@ -8,6 +9,7 @@ describe Voice do
   it { should be_a Voice }
   it { should be_a Ichabod::ResourceSet::Base }
   its(:prefix) { should eq prefix }
+  its(:collection) { should eq collection }
   its(:endpoint_url) { should eq endpoint_url }
   its(:collection_code) { should eq collection_code }
   its(:editors) { should eq ['admin_group'] }
@@ -16,6 +18,10 @@ describe Voice do
   describe '.prefix' do
     subject { Voice.prefix }
     it { should eq prefix }
+  end
+   describe '.collection' do
+    subject { Voice.collection }
+    it { should eq collection }
   end
   describe '.source_reader' do
     subject { Voice.source_reader }

@@ -4,11 +4,13 @@ describe ArchiveItAccw do
   let(:endpoint_url) { 'http://www.example.com' }
   let(:path) { '/a/b/c' }
   let(:collection_code) { 'ai-accw' }
+  let(:collection) { "Archive of Contemporary Composers' Websites" }
   let(:args) { [endpoint_url, path].compact }
   subject { ArchiveItAccw.new(*args) }
   it { should be_a ArchiveItAccw }
   it { should be_a Ichabod::ResourceSet::Base }
   its(:prefix) { should eq prefix }
+  its(:collection) { should eq collection }
   its(:endpoint_url) { should eq endpoint_url }
   its(:path) { should eq path }
   its(:editors) { should eq ['admin_group', 'afc_group'] }
@@ -16,6 +18,10 @@ describe ArchiveItAccw do
   describe '.prefix' do
     subject { ArchiveItAccw.prefix }
     it { should eq prefix }
+  end
+  describe '.collection' do
+    subject { ArchiveItAccw.collection }
+    it { should eq collection }
   end
   describe '.source_reader' do
     subject { ArchiveItAccw.source_reader }

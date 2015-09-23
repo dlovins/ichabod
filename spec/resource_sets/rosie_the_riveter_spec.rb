@@ -1,6 +1,7 @@
 require 'spec_helper'
 describe RosieTheRiveter do
   let(:prefix) { 'rosie' }
+  let(:collection) { "The Real Rosie the Riveter" }
   let(:endpoint_url) { 'https://rosie.the.riveter' }
   let(:user) { 'user' }
   let(:password) { 'password' }
@@ -11,6 +12,7 @@ describe RosieTheRiveter do
   it { should be_a RosieTheRiveter }
   it { should be_a Ichabod::ResourceSet::Base }
   its(:prefix) { should eq prefix }
+  its(:collection) { should eq collection }
   its(:endpoint_url) { should eq endpoint_url }
   its(:user) { should eq user }
   its(:password) { should eq password }
@@ -35,6 +37,10 @@ describe RosieTheRiveter do
   describe '.prefix' do
     subject { RosieTheRiveter.prefix }
     it { should eq prefix }
+  end
+  describe '.collection' do
+    subject { RosieTheRiveter.collection }
+    it { should eq collection }
   end
   describe '.source_reader' do
     subject { RosieTheRiveter.source_reader }

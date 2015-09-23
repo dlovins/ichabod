@@ -1,6 +1,7 @@
 require 'spec_helper'
 describe SpatialDataRepository do
   let(:prefix) { 'sdr' }
+  let(:collection) { "Spatial Data Repository" }
   let(:filename) { './spec/fixtures/sample_sdr.xml' }
   subject { SpatialDataRepository.new(filename) }
   it { should be_a SpatialDataRepository }
@@ -13,6 +14,10 @@ describe SpatialDataRepository do
   describe '.prefix' do
     subject { SpatialDataRepository.prefix }
     it { should eq prefix }
+  end
+  describe '.collection' do
+    subject { SpatialDataRepository.collection }
+    it { should eq collection }
   end
   describe '.source_reader' do
     subject { SpatialDataRepository.source_reader }
