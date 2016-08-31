@@ -1,13 +1,14 @@
 ## <a name="resource-layer">layer</a>
 
 
-A GIS data layer. See [this example](https://github.com/OpenGeoMetadata/edu.stanford.purl/blob/master/bb/099/zb/1450/geoblacklight.json) metadata layer.
+A  data layer. See [this example](https://github.com/OpenGeoMetadata/edu.stanford.purl/blob/master/bb/099/zb/1450/geoblacklight.json) metadata layer.
 
 ### Attributes
 
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
-| **dc_creator_sm** | *array* | Author(s) of the layer. *Optional* | `"George Washington, Thomas Jefferson"` |
+| **dc_creator** | *string* | Primary author or creator(s) of the resource. *Optional* | `"George Washington, Thomas Jefferson"` |
+| **dc_contributor** | *array* | Secondary author(s) or creator(s), or otherwise involved in creation of resource. *Optional* | `"George Washington, Thomas Jefferson"` |
 | **dc_description_s** | *string* | Description for the layer. *Optional* | `"My Description"` |
 | **dc_format_s** | *string* | File format for the layer, ideally using a controlled vocabulary. *Optional* | `"Shapefile, GeoTIFF, ArcGRID"` |
 | **dc_identifier_s** | *string* | Unique identifier for layer as a URI. It should be globally unique across all institutions, assumed not to be end-user visible, and is usually of the form `http://institution/id`. See https://github.com/geoblacklight/geoblacklight/wiki/Schema for more detailed documentation. | `"http://purl.stanford.edu/vr593vj7147"` |
